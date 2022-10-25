@@ -5,7 +5,8 @@ from keras.utils import to_categorical
 import numpy as np
 from tqdm import tqdm
 
-DATA_PATH = "./data/"
+DATA_PATH = "./GarbageCar/"
+#DATA_PATH = "./data/"
 
 
 # Input: Folder Path
@@ -48,9 +49,9 @@ def save_data_to_array(path=DATA_PATH, max_len=11):
         np.save(label + '.npy', mfcc_vectors)
 
 
-def get_train_test(split_ratio=0.6, random_state=42):
+def get_train_test(split_ratio=0.6, random_state=42, path=DATA_PATH):
     # Get available labels
-    labels, indices, _ = get_labels(DATA_PATH)
+    labels, indices, _ = get_labels(path)
 
     # Getting first arrays
     X = np.load(labels[0] + '.npy')
